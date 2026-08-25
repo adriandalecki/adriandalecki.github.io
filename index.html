@@ -553,6 +553,19 @@
   @media print {
     @page { size: A4; margin: 16mm 15mm; }
 
+    /* KRYTYCZNE: bez tego wydruk wychodzi pusty poza pierwszą stroną.
+       Odsłanianie przy przewijaniu trzyma sekcje na opacity:0, a przy druku
+       obserwator widoczności nigdy się nie uruchamia dla dalszych ekranów. */
+    .js .reveal,
+    .js .reveal.widoczne {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+
+    /* warstwa ozdobna nie ma czego szukać na papierze */
+    #tlo, #postep { display: none !important; }
+
     /* w druku zawsze jasna paleta, niezaleznie od motywu przegladarki */
     :root {
       --paper: #FFFFFF; --paper-raised: #FFFFFF;
@@ -618,9 +631,9 @@
     <p class="role">Dziennikarz i&nbsp;redaktor<span class="drugi">Media, komunikacja, wiarygodność informacji.</span></p>
 
     <div class="contact">
-      <a href="mailto:adrian2-15@o2.pl">
+      <a href="mailto:adriandallecki@gmail.com">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-        <span>adrian2-15@o2.pl</span></a>
+        <span>adriandallecki@gmail.com</span></a>
       <a href="https://www.linkedin.com/in/adrian-dalecki-9809ba173" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95C20.4 8.75 21 11 21 14v7h-4v-6.2c0-1.5-.03-3.4-2.1-3.4-2.1 0-2.4 1.6-2.4 3.3V21H9z"/></svg>
         <span>LinkedIn</span></a>
@@ -754,7 +767,7 @@
 
   <footer>
     <span>Adrian Dalecki · portfolio</span>
-    <span><a href="mailto:adrian2-15@o2.pl">adrian2-15@o2.pl</a></span>
+    <span><a href="mailto:adriandallecki@gmail.com">adriandallecki@gmail.com</a></span>
   </footer>
 
 </div>
